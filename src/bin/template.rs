@@ -16,6 +16,6 @@ fn main() {
 
 #[test]
 fn test() {
-    assert_eq!(0, part1(&read_lines("in/dayXtest")));
-    assert_eq!(0, part2(&read_lines("in/dayXtest2")));
+    //assert_eq!(0, part1(&read_lines("in/dayXtest")));
+    //assert_eq!(0, part2(&read_lines("in/dayXtest2")));
 }
