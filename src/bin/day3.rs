@@ -95,10 +95,7 @@ impl Line {
         sum
     }
     pub fn near(extents: (usize, usize), pos: &usize) -> bool {
-        if pos + 1 == extents.0 || pos - 1 == extents.1 || (extents.0..=extents.1).contains(pos) {
-            return true;
-        }
-        false
+        pos + 1 == extents.0 || pos - 1 == extents.1 || (extents.0..=extents.1).contains(pos)
     }
 }
 
