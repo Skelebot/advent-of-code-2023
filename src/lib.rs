@@ -1,7 +1,7 @@
 use std::{
     fmt::Debug,
     fs::File,
-    io::{BufRead, BufReader},
+    io::{BufRead, BufReader, Read},
     path::Path,
     str::FromStr,
 };
@@ -9,6 +9,17 @@ use std::{
 pub fn read_file<P: AsRef<Path>>(path: P) -> BufReader<File> {
     let file = File::open(path).expect("failed to read file");
     BufReader::new(file)
+}
+
+pub fn read_parse<P: AsRef<Path>, A>(path: P) -> A
+where
+    A: FromStr,
+    <A as FromStr>::Err: Debug,
+{
+    let file = File::open(path).expect("failed to read file");
+    let mut s = String::new();
+    BufReader::new(file).read_to_string(&mut s).unwrap();
+    s.parse().unwrap()
 }
 
 pub fn read_lines<T, P: AsRef<Path>>(path: P) -> Vec<T>
