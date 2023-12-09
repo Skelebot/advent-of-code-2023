@@ -82,3 +82,19 @@ where
         .map(|s| s.trim().parse().expect("failed to parse"))
         .collect()
 }
+
+pub fn read_lines_split<T, P: AsRef<Path>>(path: P, delim: &str) -> Vec<Vec<T>>
+where
+    T: FromStr,
+    <T as FromStr>::Err: Debug,
+{
+    read_file(path)
+        .lines()
+        .map(|l| {
+            l.unwrap()
+                .split(delim)
+                .map(|s| s.trim().parse().expect("failed to parse"))
+                .collect()
+        })
+        .collect()
+}
